@@ -94,6 +94,7 @@ public sealed class StepDefinitions
 
 				break;
 			default:
+				_catalogue.ClickPriceRange(p0);
 				break;
 		}
 	}
@@ -101,7 +102,7 @@ public sealed class StepDefinitions
 	[Then(@"displayed item prices are within (.*)")]
 	public void ThenDisplayedItemPricesAreWithin(string p0)
 	{
-		ScenarioContext.StepIsPending();
+		_catalogue.PricesWithinRange(p0);
 	}
 
 	[Then(@"user is redirected to order processing")]
@@ -120,13 +121,13 @@ public sealed class StepDefinitions
 	[Then(@"items are shown on catalogue page")]
 	public void ThenItemsAreShownOnCataloguePage()
 	{
-		ScenarioContext.StepIsPending();
+		Assert.True(_catalogue.ItemsAreDisplayed());
 	}
 
 	[Then(@"item names contain (.*)")]
 	public void ThenItemNamesContain(string query)
 	{
-		ScenarioContext.StepIsPending();
+		Assert.True(_catalogue.ItemNamesContain(query));
 	}
 
 	[Given(@"items are in cart")]

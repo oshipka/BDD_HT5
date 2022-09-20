@@ -28,6 +28,7 @@ public class Header
 
 	public void Search(string textToInput)
 	{
+		_wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("#twotabsearchtextbox")));
 		SearchBar.SendKeys(textToInput);
 		SearchBar.Submit();
 	}
